@@ -262,6 +262,8 @@ class DesktopEngineProjectImplementation(object):
                     logger.debug(str(w))
                 logger.debug("Process will quit only when the last window is closed.")
                 app.setQuitOnLastWindowClosed(True)
+                for opened_window in opened_windows:
+                    opened_window.close()
             else:
                 logger.debug("Quitting on disconnect")
                 app.quit()

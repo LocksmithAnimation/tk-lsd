@@ -41,6 +41,10 @@ def main():
         with open(opts.data, "rb") as fh:
             data = pickle.load(fh)
 
+        # setup the Rez environment for the project. This relies on Rez having
+        # been added the PYTHONPATH in tk-framework-desktopstartup
+        setup_environment()
+
         # launch the engine
         #
         # Use the methods from the utility module (passing in the data from the
@@ -91,6 +95,16 @@ def parse_args():
         return -1
 
     return opts
+
+
+def setup_environment():
+    from rez.resolved_context import ResolvedContext
+    from rez.config import config
+    current_path = sys.path
+    config.parent_variables = []
+    context = ResolvedContext(["desktop_env"])
+    context.apply()
+    sys.path.extend(current_path)
 
 
 if __name__ == "__main__":

@@ -146,6 +146,9 @@ class DesktopEngine(Engine):
         if hasattr(self.__impl, "post_app_init"):
             self.__impl.post_app_init()
 
+    def _get_dialog_parent(self):
+        return None
+
     def show_panel(self, panel_id, title, bundle, widget_class, *args, **kwargs):
         """
         Shows the panel in the desktop engine, if supported by the current
