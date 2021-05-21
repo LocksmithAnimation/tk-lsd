@@ -229,7 +229,7 @@ class Bootstrap(object):
             manager.progress_callback = self._progress_callback
 
             # We're now ready to start the engine.
-            return manager.bootstrap_engine("tk-desktop", self._project)
+            return manager.bootstrap_engine("tk-lsd", self._project)
         except Exception as exc:
             # We have a situation here where, on Windows, we end up with some
             # kind of leaked connection back to the server. This results in

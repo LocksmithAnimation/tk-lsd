@@ -100,6 +100,7 @@ def parse_args():
 def setup_environment():
     from rez.resolved_context import ResolvedContext
     from rez.config import config
+
     current_path = sys.path
     config.parent_variables = []
     context = ResolvedContext(["desktop_env"])
