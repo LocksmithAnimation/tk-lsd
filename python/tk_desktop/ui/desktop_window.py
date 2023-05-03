@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'desktop_window.ui'
+# Form implementation generated from reading ui file 'U:\dev\will.wilson\shotgun\engines\tk-lsd\resources\desktop_window.ui'
 #
-#      by: pyside-uic 0.2.15 running on PySide 1.2.2
+# Created: Wed May  3 15:17:16 2023
+#      by: pyside-uic 0.2.15 running on tank.platform.qt 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
 
-from sgtk.platform.qt import QtCore, QtGui
+from tank.platform.qt import QtCore, QtGui
 
 class Ui_DesktopWindow(object):
     def setupUi(self, DesktopWindow):
@@ -307,14 +308,14 @@ class Ui_DesktopWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.shotgun_button.sizePolicy().hasHeightForWidth())
         self.shotgun_button.setSizePolicy(sizePolicy)
-        self.shotgun_button.setMinimumSize(QtCore.QSize(132, 26))
-        self.shotgun_button.setMaximumSize(QtCore.QSize(132, 26))
+        self.shotgun_button.setMinimumSize(QtCore.QSize(106, 40))
+        self.shotgun_button.setMaximumSize(QtCore.QSize(106, 40))
         self.shotgun_button.setMouseTracking(True)
         self.shotgun_button.setFocusPolicy(QtCore.Qt.NoFocus)
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(":/tk-desktop/shotgun_logo_light_medium.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.shotgun_button.setIcon(icon4)
-        self.shotgun_button.setIconSize(QtCore.QSize(122, 16))
+        self.shotgun_button.setIconSize(QtCore.QSize(102, 32))
         self.shotgun_button.setFlat(True)
         self.shotgun_button.setObjectName("shotgun_button")
         self.horizontalLayout_3.addWidget(self.shotgun_button)

@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'loading_project_widget.ui'
+# Form implementation generated from reading ui file 'U:\dev\will.wilson\shotgun\engines\tk-lsd\resources\loading_project_widget.ui'
 #
-#      by: pyside-uic 0.2.15 running on PySide 1.2.2
+# Created: Wed May  3 15:17:21 2023
+#      by: pyside-uic 0.2.15 running on tank.platform.qt 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
 
-from sgtk.platform.qt import QtCore, QtGui
+from tank.platform.qt import QtCore, QtGui
 
 class Ui_LoadingProjectWidget(object):
     def setupUi(self, LoadingProjectWidget):

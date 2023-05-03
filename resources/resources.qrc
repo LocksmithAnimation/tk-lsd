@@ -22,10 +22,10 @@
     <file>default_user_thumb.png</file>
     <file>up_carat.png</file>
     <file>down_carat.png</file>
-    <file>shotgun_logo_light_medium.png</file>
     <file>loading_512x400.png</file>
     <file>shotgun_logo.png</file>
     <file>gear.png</file>
+    <file>shotgun_logo_light_medium.png</file>
     <file>default_systray_icon.png</file>
     <file>cross.png</file>
   </qresource>
