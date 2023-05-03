@@ -55,13 +55,17 @@ sys.excepthook = unhandled_exception_handler
 
 class DesktopEngine(Engine):
     def __init__(self, tk, *args, **kwargs):
-        """ Constructor """
+        """Constructor"""
         self.__impl = None
 
         # Now continue with the standard initialization
         Engine.__init__(self, tk, *args, **kwargs)
 
-        self._host_info = {"name": "Desktop", "version": "unknown"}
+    def __new__(cls, *args, **kwargs):
+        # Assigning a default value to _host_info property during
+        # object creation.
+        cls._host_info = {"name": "Desktop", "version": "unknown"}
+        return super(DesktopEngine, cls).__new__(cls)
 
     @property
     def host_info(self):
@@ -105,7 +109,7 @@ class DesktopEngine(Engine):
     ############################################################################
     # Engine methods
     def init_engine(self):
-        """ Initialize the engine """
+        """Initialize the engine"""
 
         # Figure out which implementation we will use.  If the tk instance
         # has the proxy connection information in it, then we are running
@@ -142,7 +146,7 @@ class DesktopEngine(Engine):
             self.__impl.init_engine()
 
     def post_app_init(self):
-        """ Called after all the apps have been initialized """
+        """Called after all the apps have been initialized"""
         if hasattr(self.__impl, "post_app_init"):
             self.__impl.post_app_init()
 
@@ -177,7 +181,7 @@ class DesktopEngine(Engine):
             )
 
     def destroy_engine(self):
-        """ Clean up the engine """
+        """Clean up the engine"""
         self.logger.debug("destroy_engine")
 
         if hasattr(self.__impl, "destroy_engine"):
@@ -203,12 +207,12 @@ class DesktopEngine(Engine):
     # pyside / qt
     @property
     def has_ui(self):
-        """ Override base has_ui to reflect the state of Qt imports """
+        """Override base has_ui to reflect the state of Qt imports"""
         return self._has_ui
 
     @has_ui.setter
     def has_ui(self, has_a_ui):
-        """ Allows to set the has ui property. """
+        """Allows to set the has ui property."""
         self._has_ui = has_a_ui
 
     def _define_unavailable_base(self):
@@ -229,7 +233,7 @@ class DesktopEngine(Engine):
         return base
 
     def _define_qt_base(self):
-        """ check for pyside then pyqt """
+        """check for pyside then pyqt"""
         base = Engine._define_qt_base(self)
 
         # If QtCore hasn't been set, then nothing was.

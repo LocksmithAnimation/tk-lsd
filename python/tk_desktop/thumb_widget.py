@@ -8,6 +8,8 @@
 # agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
+import os
+
 from tank.platform.qt import QtGui
 from tank.platform.qt import QtCore
 
@@ -15,7 +17,7 @@ from .ui import thumb_widget
 
 
 class ThumbWidget(QtGui.QWidget):
-    """Thumbnail widget to poplulate the projects list view """
+    """Thumbnail widget to poplulate the projects list view"""
 
     SIZER_WIDGET = None
 
@@ -33,12 +35,28 @@ class ThumbWidget(QtGui.QWidget):
         self.ui.thumbnail.setFixedSize(self.thumb_size, self.thumb_size)
 
     def set_thumbnail(self, pixmap):
-        """ Set a thumbnail given the current pixmap. """
-        # zoom to fit height, then crop to center
-        pixmap = pixmap.scaledToHeight(self.thumb_size, QtCore.Qt.SmoothTransformation)
-        if pixmap.width() > self.thumb_size:
-            extra = pixmap.width() - self.thumb_size
-            pixmap = pixmap.copy(extra / 2, 0, self.thumb_size, self.thumb_size)
+        """Set a thumbnail given the current pixmap."""
+
+        if os.getenv("SGTK_PROJ_THUMB_OLD") == "True":
+            # zoom to fit height, then crop to center
+            pixmap = pixmap.scaledToHeight(
+                self.thumb_size, QtCore.Qt.SmoothTransformation
+            )
+            if pixmap.width() > self.thumb_size:
+                extra = pixmap.width() - self.thumb_size
+                pixmap = pixmap.copy(extra / 2, 0, self.thumb_size, self.thumb_size)
+        else:
+            # keep thumbnail ratio and add "letter box" margins if needed
+            # (margins will use background color)
+            dst_pixmap = QtGui.QPixmap(self.thumb_size, self.thumb_size)
+            pixmap = pixmap.scaled(dst_pixmap.size(), QtCore.Qt.KeepAspectRatio)
+            painter = QtGui.QPainter(dst_pixmap)
+            if pixmap.width() < self.thumb_size:
+                painter.drawPixmap((self.thumb_size - pixmap.width()) / 2, 0, pixmap)
+            else:
+                painter.drawPixmap(0, self.thumb_size - pixmap.height() / 2, pixmap)
+            painter.end()
+
         self.ui.thumbnail.setPixmap(pixmap)
 
     @classmethod
@@ -60,7 +78,7 @@ class ThumbWidget(QtGui.QWidget):
         return margins.top() + margins.bottom() + spacing + thumb_height + label_height
 
     def set_text(self, label):
-        """Populate the line of text in the widget """
+        """Populate the line of text in the widget"""
         self.ui.label.setText(label)
 
     def set_selected(self, selected):
