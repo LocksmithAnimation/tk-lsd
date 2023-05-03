@@ -43,7 +43,7 @@ def main():
 
         # setup the Rez environment for the project. This relies on Rez having
         # been added the PYTHONPATH in tk-framework-desktopstartup
-        setup_environment()
+        setup_environment(data["project"]["name"])
 
         # launch the engine
         #
@@ -97,13 +97,13 @@ def parse_args():
     return opts
 
 
-def setup_environment():
+def setup_environment(project_name):
     from rez.resolved_context import ResolvedContext
     from rez.config import config
 
     current_path = sys.path
     config.parent_variables = []
-    context = ResolvedContext(["desktop_env"])
+    context = ResolvedContext(["desktop_env", f"{project_name.lower()}_env"])
     context.apply()
     sys.path.extend(current_path)
 
