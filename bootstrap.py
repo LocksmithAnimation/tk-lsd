@@ -97,13 +97,21 @@ def parse_args():
     return opts
 
 
+def generate_project_key(project_name):
+    project_name = project_name.lower()
+    if project_name.endswith("greenlight"):
+        project_name = project_name[:-10].strip()
+    return project_name
+
+
 def setup_environment(project_name):
     from rez.resolved_context import ResolvedContext
     from rez.config import config
 
     current_path = sys.path
     config.parent_variables = []
-    context = ResolvedContext(["desktop_env", f"{project_name.lower()}_env"])
+    project_key = generate_project_key(project_name)
+    context = ResolvedContext(["desktop_env", f"{project_key}_env"])
     context.apply()
     sys.path.extend(current_path)
 

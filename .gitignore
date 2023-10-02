@@ -46,3 +46,5 @@ htmlcov
 
 # pyenv
 .python-version
+
+Thumbs.db
