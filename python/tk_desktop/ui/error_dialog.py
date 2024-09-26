@@ -1,55 +1,87 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'U:\dev\will.wilson\shotgun\engines\tk-lsd\resources\error_dialog.ui'
-#
-# Created: Wed May  3 15:17:18 2023
-#      by: pyside-uic 0.2.15 running on tank.platform.qt 1.2.4
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'error_dialog.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from tank.platform.qt import QtCore, QtGui
+from sgtk.platform.qt import QtCore
+
+for name, cls in QtCore.__dict__.items():
+    if isinstance(cls, type):
+        globals()[name] = cls
+
+from sgtk.platform.qt import QtGui
+
+for name, cls in QtGui.__dict__.items():
+    if isinstance(cls, type):
+        globals()[name] = cls
+
 
 class Ui_ErrorDialog(object):
     def setupUi(self, ErrorDialog):
-        ErrorDialog.setObjectName("ErrorDialog")
+        if not ErrorDialog.objectName():
+            ErrorDialog.setObjectName("ErrorDialog")
         ErrorDialog.resize(572, 443)
         ErrorDialog.setModal(True)
-        self.verticalLayout = QtGui.QVBoxLayout(ErrorDialog)
+        self.verticalLayout = QVBoxLayout(ErrorDialog)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setSpacing(20)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.icon = QtGui.QLabel(ErrorDialog)
+        self.icon = QLabel(ErrorDialog)
         self.icon.setObjectName("icon")
+
         self.horizontalLayout.addWidget(self.icon)
-        self.title = QtGui.QLabel(ErrorDialog)
+
+        self.title = QLabel(ErrorDialog)
+        self.title.setObjectName("title")
         self.title.setStyleSheet("font-size: 20px;")
         self.title.setWordWrap(True)
-        self.title.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
-        self.title.setObjectName("title")
+        self.title.setTextInteractionFlags(
+            Qt.LinksAccessibleByMouse | Qt.TextSelectableByMouse
+        )
+
         self.horizontalLayout.addWidget(self.title)
+
         self.horizontalLayout.setStretch(1, 1)
+
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.message = QtGui.QTextEdit(ErrorDialog)
-        self.message.setUndoRedoEnabled(False)
-        self.message.setLineWrapMode(QtGui.QTextEdit.NoWrap)
-        self.message.setReadOnly(True)
-        self.message.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+
+        self.message = QTextEdit(ErrorDialog)
         self.message.setObjectName("message")
+        self.message.setUndoRedoEnabled(False)
+        self.message.setLineWrapMode(QTextEdit.NoWrap)
+        self.message.setReadOnly(True)
+        self.message.setTextInteractionFlags(
+            Qt.LinksAccessibleByMouse | Qt.TextSelectableByMouse
+        )
+
         self.verticalLayout.addWidget(self.message)
-        self.buttonBox = QtGui.QDialogButtonBox(ErrorDialog)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Close)
+
+        self.buttonBox = QDialogButtonBox(ErrorDialog)
         self.buttonBox.setObjectName("buttonBox")
+        self.buttonBox.setOrientation(Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Close)
+
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(ErrorDialog)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), ErrorDialog.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), ErrorDialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(ErrorDialog)
+        self.buttonBox.accepted.connect(ErrorDialog.accept)
+        self.buttonBox.rejected.connect(ErrorDialog.reject)
+
+        QMetaObject.connectSlotsByName(ErrorDialog)
+
+    # setupUi
 
     def retranslateUi(self, ErrorDialog):
-        ErrorDialog.setWindowTitle(QtGui.QApplication.translate("ErrorDialog", "Toolkit Error", None, QtGui.QApplication.UnicodeUTF8))
-        self.icon.setText(QtGui.QApplication.translate("ErrorDialog", "Error Icon", None, QtGui.QApplication.UnicodeUTF8))
-        self.title.setText(QtGui.QApplication.translate("ErrorDialog", "Title", None, QtGui.QApplication.UnicodeUTF8))
+        ErrorDialog.setWindowTitle(
+            QCoreApplication.translate("ErrorDialog", "Toolkit Error", None)
+        )
+        self.icon.setText(QCoreApplication.translate("ErrorDialog", "Error Icon", None))
+        self.title.setText(QCoreApplication.translate("ErrorDialog", "Title", None))
 
+    # retranslateUi

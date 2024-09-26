@@ -24,6 +24,11 @@ from sgtk import LogManager
 
 from .site_communication import SiteCommunication
 
+try:
+    from tank_vendor import sgutils
+except ImportError:
+    from tank_vendor import six as sgutils
+
 shotgun_globals = sgtk.platform.import_framework(
     "tk-framework-shotgunutils", "shotgun_globals"
 )
@@ -37,7 +42,8 @@ logger = LogManager.get_logger(__name__)
 class DesktopEngineSiteImplementation(object):
     def __init__(self, engine):
 
-        self.site_comm = SiteCommunication(engine)
+        self.site_comm = SiteCommunication()
+        self.site_comm.set_engine(engine)
         self.site_comm.proxy_closing.connect(self._on_proxy_closing)
         self.site_comm.proxy_created.connect(self._on_proxy_created)
 
@@ -352,7 +358,7 @@ class DesktopEngineSiteImplementation(object):
         # Make sure the string is a str and not unicode. This happens in
         # Python 2.7.
         self.site_comm.call_no_response(
-            "trigger_callback", "__commands", six.ensure_str(name)
+            "trigger_callback", "__commands", sgutils.ensure_str(name)
         )
 
     # Leave app_version as is for backwards compatibility.

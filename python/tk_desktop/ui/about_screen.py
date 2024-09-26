@@ -1,81 +1,145 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'U:\dev\will.wilson\shotgun\engines\tk-lsd\resources\about_screen.ui'
-#
-# Created: Wed May  3 15:17:12 2023
-#      by: pyside-uic 0.2.15 running on tank.platform.qt 1.2.4
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'about_screen.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from tank.platform.qt import QtCore, QtGui
+from sgtk.platform.qt import QtCore
+
+for name, cls in QtCore.__dict__.items():
+    if isinstance(cls, type):
+        globals()[name] = cls
+
+from sgtk.platform.qt import QtGui
+
+for name, cls in QtGui.__dict__.items():
+    if isinstance(cls, type):
+        globals()[name] = cls
+
+
+from . import resources_rc
+
 
 class Ui_AboutScreen(object):
     def setupUi(self, AboutScreen):
-        AboutScreen.setObjectName("AboutScreen")
+        if not AboutScreen.objectName():
+            AboutScreen.setObjectName("AboutScreen")
         AboutScreen.resize(325, 385)
-        AboutScreen.setMinimumSize(QtCore.QSize(320, 327))
-        self.verticalLayout = QtGui.QVBoxLayout(AboutScreen)
+        AboutScreen.setMinimumSize(QSize(320, 327))
+        self.verticalLayout = QVBoxLayout(AboutScreen)
         self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.icon = QtGui.QLabel(AboutScreen)
-        self.icon.setMinimumSize(QtCore.QSize(100, 100))
-        self.icon.setMaximumSize(QtCore.QSize(100, 100))
-        self.icon.setText("")
-        self.icon.setPixmap(QtGui.QPixmap(":/tk-desktop/shotgun_logo.png"))
-        self.icon.setScaledContents(True)
+        self.icon = QLabel(AboutScreen)
         self.icon.setObjectName("icon")
+        self.icon.setMinimumSize(QSize(100, 100))
+        self.icon.setMaximumSize(QSize(100, 100))
+        self.icon.setPixmap(QPixmap(":/tk-desktop/shotgun_logo.png"))
+        self.icon.setScaledContents(True)
+
         self.horizontalLayout.addWidget(self.icon)
+
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.header = QtGui.QLabel(AboutScreen)
-        self.header.setStyleSheet("font-size: 16px;")
-        self.header.setAlignment(QtCore.Qt.AlignCenter)
-        self.header.setWordWrap(True)
+
+        self.header = QLabel(AboutScreen)
         self.header.setObjectName("header")
+        self.header.setStyleSheet("font-size: 16px;")
+        self.header.setAlignment(Qt.AlignCenter)
+        self.header.setWordWrap(True)
+
         self.verticalLayout.addWidget(self.header)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
-        self.body = QtGui.QLabel(AboutScreen)
-        self.body.setAlignment(QtCore.Qt.AlignCenter)
-        self.body.setWordWrap(True)
+
+        self.verticalSpacer_2 = QSpacerItem(
+            20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding
+        )
+
+        self.verticalLayout.addItem(self.verticalSpacer_2)
+
+        self.body = QLabel(AboutScreen)
         self.body.setObjectName("body")
+        self.body.setAlignment(Qt.AlignCenter)
+        self.body.setWordWrap(True)
+
         self.verticalLayout.addWidget(self.body)
-        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem1)
-        self.copyright = QtGui.QLabel(AboutScreen)
-        self.copyright.setStyleSheet("font-size: 10px;")
-        self.copyright.setAlignment(QtCore.Qt.AlignCenter)
-        self.copyright.setWordWrap(True)
+
+        self.verticalSpacer = QSpacerItem(
+            20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding
+        )
+
+        self.verticalLayout.addItem(self.verticalSpacer)
+
+        self.copyright = QLabel(AboutScreen)
         self.copyright.setObjectName("copyright")
+        self.copyright.setStyleSheet("font-size: 10px;")
+        self.copyright.setAlignment(Qt.AlignCenter)
+        self.copyright.setWordWrap(True)
+
         self.verticalLayout.addWidget(self.copyright)
-        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+
+        self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem2)
-        self.buttonBox = QtGui.QDialogButtonBox(AboutScreen)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setCenterButtons(False)
+        self.horizontalSpacer_2 = QSpacerItem(
+            40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum
+        )
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
+        self.buttonBox = QDialogButtonBox(AboutScreen)
         self.buttonBox.setObjectName("buttonBox")
+        self.buttonBox.setOrientation(Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Ok)
+        self.buttonBox.setCenterButtons(False)
+
         self.horizontalLayout_2.addWidget(self.buttonBox)
-        self.licensesButton = QtGui.QPushButton(AboutScreen)
+
+        self.licensesButton = QPushButton(AboutScreen)
         self.licensesButton.setObjectName("licensesButton")
+
         self.horizontalLayout_2.addWidget(self.licensesButton)
-        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem3)
+
+        self.horizontalSpacer = QSpacerItem(
+            40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum
+        )
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer)
+
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.retranslateUi(AboutScreen)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), AboutScreen.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), AboutScreen.reject)
-        QtCore.QMetaObject.connectSlotsByName(AboutScreen)
+        self.buttonBox.accepted.connect(AboutScreen.accept)
+        self.buttonBox.rejected.connect(AboutScreen.reject)
+
+        QMetaObject.connectSlotsByName(AboutScreen)
+
+    # setupUi
 
     def retranslateUi(self, AboutScreen):
-        AboutScreen.setWindowTitle(QtGui.QApplication.translate("AboutScreen", "About Flow Production Tracking", None, QtGui.QApplication.UnicodeUTF8))
-        self.header.setText(QtGui.QApplication.translate("AboutScreen", "<b><big>Flow Production Tracking</big></b>", None, QtGui.QApplication.UnicodeUTF8))
-        self.body.setText(QtGui.QApplication.translate("AboutScreen", "Body", None, QtGui.QApplication.UnicodeUTF8))
-        self.copyright.setText(QtGui.QApplication.translate("AboutScreen", "Copyright ©2024 Autodesk, Inc. All rights reserved.", None, QtGui.QApplication.UnicodeUTF8))
-        self.licensesButton.setText(QtGui.QApplication.translate("AboutScreen", "Licenses...", None, QtGui.QApplication.UnicodeUTF8))
+        AboutScreen.setWindowTitle(
+            QCoreApplication.translate(
+                "AboutScreen", "About Flow Production Tracking", None
+            )
+        )
+        self.icon.setText("")
+        self.header.setText(
+            QCoreApplication.translate(
+                "AboutScreen", "<b><big>Flow Production Tracking</big></b>", None
+            )
+        )
+        self.body.setText(QCoreApplication.translate("AboutScreen", "Body", None))
+        self.copyright.setText(
+            QCoreApplication.translate(
+                "AboutScreen",
+                "Copyright \u00a92024 Autodesk. All rights reserved.",
+                None,
+            )
+        )
+        self.licensesButton.setText(
+            QCoreApplication.translate("AboutScreen", "Licenses...", None)
+        )
 
-from . import resources_rc
+    # retranslateUi

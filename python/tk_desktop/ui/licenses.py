@@ -1,37 +1,59 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'U:\dev\will.wilson\shotgun\engines\tk-lsd\resources\licenses.ui'
-#
-# Created: Wed May  3 15:17:19 2023
-#      by: pyside-uic 0.2.15 running on tank.platform.qt 1.2.4
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'licenses.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from tank.platform.qt import QtCore, QtGui
+from sgtk.platform.qt import QtCore
+
+for name, cls in QtCore.__dict__.items():
+    if isinstance(cls, type):
+        globals()[name] = cls
+
+from sgtk.platform.qt import QtGui
+
+for name, cls in QtGui.__dict__.items():
+    if isinstance(cls, type):
+        globals()[name] = cls
+
 
 class Ui_Licenses(object):
     def setupUi(self, Licenses):
-        Licenses.setObjectName("Licenses")
+        if not Licenses.objectName():
+            Licenses.setObjectName("Licenses")
         Licenses.resize(500, 400)
-        Licenses.setMinimumSize(QtCore.QSize(500, 400))
-        self.verticalLayout_2 = QtGui.QVBoxLayout(Licenses)
+        Licenses.setMinimumSize(QSize(500, 400))
+        self.verticalLayout_2 = QVBoxLayout(Licenses)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.licenseText = QtGui.QTextBrowser(Licenses)
-        self.licenseText.setOpenExternalLinks(True)
+        self.licenseText = QTextBrowser(Licenses)
         self.licenseText.setObjectName("licenseText")
+        self.licenseText.setOpenExternalLinks(True)
+
         self.verticalLayout_2.addWidget(self.licenseText)
-        self.buttonBox = QtGui.QDialogButtonBox(Licenses)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setCenterButtons(True)
+
+        self.buttonBox = QDialogButtonBox(Licenses)
         self.buttonBox.setObjectName("buttonBox")
+        self.buttonBox.setOrientation(Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Ok)
+        self.buttonBox.setCenterButtons(True)
+
         self.verticalLayout_2.addWidget(self.buttonBox)
 
         self.retranslateUi(Licenses)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Licenses.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Licenses.reject)
-        QtCore.QMetaObject.connectSlotsByName(Licenses)
+        self.buttonBox.accepted.connect(Licenses.accept)
+        self.buttonBox.rejected.connect(Licenses.reject)
+
+        QMetaObject.connectSlotsByName(Licenses)
+
+    # setupUi
 
     def retranslateUi(self, Licenses):
-        Licenses.setWindowTitle(QtGui.QApplication.translate("Licenses", "Licenses", None, QtGui.QApplication.UnicodeUTF8))
+        Licenses.setWindowTitle(
+            QCoreApplication.translate("Licenses", "Licenses", None)
+        )
 
+    # retranslateUi

@@ -1,56 +1,92 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'U:\dev\will.wilson\shotgun\engines\tk-lsd\resources\wait_screen.ui'
-#
-# Created: Wed May  3 15:17:29 2023
-#      by: pyside-uic 0.2.15 running on tank.platform.qt 1.2.4
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'wait_screen.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from tank.platform.qt import QtCore, QtGui
+from sgtk.platform.qt import QtCore
+
+for name, cls in QtCore.__dict__.items():
+    if isinstance(cls, type):
+        globals()[name] = cls
+
+from sgtk.platform.qt import QtGui
+
+for name, cls in QtGui.__dict__.items():
+    if isinstance(cls, type):
+        globals()[name] = cls
+
+
+from . import resources_rc
+
 
 class Ui_WaitScreen(object):
     def setupUi(self, WaitScreen):
-        WaitScreen.setObjectName("WaitScreen")
+        if not WaitScreen.objectName():
+            WaitScreen.setObjectName("WaitScreen")
         WaitScreen.resize(295, 81)
-        WaitScreen.setStyleSheet("QDialog {\n"
-"    border: 1px solid rgb(39, 167, 223);\n"
-"}")
-        self.horizontalLayout = QtGui.QHBoxLayout(WaitScreen)
-        self.horizontalLayout.setContentsMargins(20, 5, -1, 5)
+        WaitScreen.setStyleSheet(
+            "QDialog {\n" "	border: 1px solid rgb(39, 167, 223);\n" "}"
+        )
+        self.horizontalLayout = QHBoxLayout(WaitScreen)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.icon = QtGui.QLabel(WaitScreen)
-        self.icon.setMinimumSize(QtCore.QSize(62, 62))
-        self.icon.setMaximumSize(QtCore.QSize(62, 62))
-        self.icon.setText("")
-        self.icon.setPixmap(QtGui.QPixmap(":/tk-desktop/wait_screen_icon.png"))
+        self.horizontalLayout.setContentsMargins(20, 5, -1, 5)
+        self.icon = QLabel(WaitScreen)
         self.icon.setObjectName("icon")
+        self.icon.setMinimumSize(QSize(62, 62))
+        self.icon.setMaximumSize(QSize(62, 62))
+        self.icon.setPixmap(QPixmap(":/tk-desktop/wait_screen_icon.png"))
+
         self.horizontalLayout.addWidget(self.icon)
-        self.verticalLayout = QtGui.QVBoxLayout()
+
+        self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setSpacing(5)
-        self.verticalLayout.setContentsMargins(-1, 0, -1, 0)
         self.verticalLayout.setObjectName("verticalLayout")
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
-        self.header = QtGui.QLabel(WaitScreen)
-        self.header.setStyleSheet("color: rgb(39, 167, 223);")
+        self.verticalLayout.setContentsMargins(-1, 0, -1, 0)
+        self.verticalSpacer = QSpacerItem(
+            20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding
+        )
+
+        self.verticalLayout.addItem(self.verticalSpacer)
+
+        self.header = QLabel(WaitScreen)
         self.header.setObjectName("header")
+        self.header.setStyleSheet("color: rgb(39, 167, 223);")
+
         self.verticalLayout.addWidget(self.header)
-        self.subheader = QtGui.QLabel(WaitScreen)
-        self.subheader.setStyleSheet("border: none;\n"
-"background-color: transparent;")
+
+        self.subheader = QLabel(WaitScreen)
         self.subheader.setObjectName("subheader")
+        self.subheader.setStyleSheet("border: none;\n" "background-color: transparent;")
+
         self.verticalLayout.addWidget(self.subheader)
-        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem1)
+
+        self.verticalSpacer_2 = QSpacerItem(
+            20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding
+        )
+
+        self.verticalLayout.addItem(self.verticalSpacer_2)
+
         self.horizontalLayout.addLayout(self.verticalLayout)
 
         self.retranslateUi(WaitScreen)
-        QtCore.QMetaObject.connectSlotsByName(WaitScreen)
+
+        QMetaObject.connectSlotsByName(WaitScreen)
+
+    # setupUi
 
     def retranslateUi(self, WaitScreen):
-        WaitScreen.setWindowTitle(QtGui.QApplication.translate("WaitScreen", "Working on it", None, QtGui.QApplication.UnicodeUTF8))
-        self.header.setText(QtGui.QApplication.translate("WaitScreen", "Header", None, QtGui.QApplication.UnicodeUTF8))
-        self.subheader.setText(QtGui.QApplication.translate("WaitScreen", "subheader", None, QtGui.QApplication.UnicodeUTF8))
+        WaitScreen.setWindowTitle(
+            QCoreApplication.translate("WaitScreen", "Working on it", None)
+        )
+        self.icon.setText("")
+        self.header.setText(QCoreApplication.translate("WaitScreen", "Header", None))
+        self.subheader.setText(
+            QCoreApplication.translate("WaitScreen", "subheader", None)
+        )
 
-from . import resources_rc
+    # retranslateUi
