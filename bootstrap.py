@@ -97,7 +97,7 @@ def parse_args():
 
 
 def generate_project_key(project_name):
-    project_name = project_name.lower()
+    project_name = project_name.lower().replace(" ", "")
     if project_name.endswith("greenlight"):
         project_name = project_name[:-10].strip()
     return project_name
