@@ -8,7 +8,6 @@
 # agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
-from __future__ import with_statement
 import os
 import re
 import sys
@@ -18,16 +17,10 @@ import collections
 from distutils.version import LooseVersion
 import sgtk
 from tank_vendor.shotgun_authentication import ShotgunAuthenticator, DefaultsManager
-from tank_vendor import six
 
 from sgtk import LogManager
 
 from .site_communication import SiteCommunication
-
-try:
-    from tank_vendor import sgutils
-except ImportError:
-    from tank_vendor import six as sgutils
 
 shotgun_globals = sgtk.platform.import_framework(
     "tk-framework-shotgunutils", "shotgun_globals"
@@ -163,7 +156,7 @@ class DesktopEngineSiteImplementation(object):
         # Execute the actual commands.
         # For example, a command could be displaying a panel in order to
         # display it as a tab in the desktop.
-        for (_, _, command_callback) in commands:
+        for _, _, command_callback in commands:
             command_callback()
 
     def show_panel(self, panel_id, title, bundle, widget_class, *args, **kwargs):
@@ -355,11 +348,7 @@ class DesktopEngineSiteImplementation(object):
     def _handle_button_command_triggered(self, name):
         """Button clicked from a registered command."""
         self.refresh_user_credentials()
-        # Make sure the string is a str and not unicode. This happens in
-        # Python 2.7.
-        self.site_comm.call_no_response(
-            "trigger_callback", "__commands", sgutils.ensure_str(name)
-        )
+        self.site_comm.call_no_response("trigger_callback", "__commands", str(name))
 
     # Leave app_version as is for backwards compatibility.
     def run(self, splash, version, **kwargs):
@@ -531,16 +520,9 @@ class DesktopEngineSiteImplementation(object):
         Returns if the PTR desktop app installed code uses the tk-framework-login for
         logging in.
 
-        :returns: True the bootstrap logic is older than 1.1.0, False otherwise.
+        :returns: True the bootstrap logic is older than v1.1.0, False otherwise.
         """
-        # Desktop versions have been using the vX.Y.Z notation for a while now.
-        # While this didn't pose a problem when using a LooseVersion comparison
-        # to the X.Y.Z notation, in Python 3 this blows up.
-        #
-        # Since Python 3 builds of the PTR desktop app and greater do not support
-        # the legacy authentication, we'll test for Python 2 and return False
-        # automatically in Python 3 environments.
-        return six.PY2 and LooseVersion(self.app_version) < LooseVersion("1.1.0")
+        return LooseVersion(self.app_version) < LooseVersion("v1.1.0")
 
     def create_legacy_login_instance(self):
         """

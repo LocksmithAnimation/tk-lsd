@@ -8,9 +8,7 @@
 # agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
-from __future__ import with_statement
-
-from tank_test.tank_test_base import TankTestBase, SealedMock, mock
+from tank_test.tank_test_base import TankTestBase, SealedMock
 from tank_test.tank_test_base import setUpModule  # noqa
 
 import notifications
@@ -30,7 +28,7 @@ class TestNotifications(TankTestBase):
     """
 
     def setUp(self):
-        super(TestNotifications, self).setUp()
+        super().setUp()
 
         # Mocks ShotgunUtils UserSettings class.
         self._user_settings = MockUserSettings()
@@ -221,30 +219,3 @@ class TestNotifications(TankTestBase):
 
         # Now there should be no more current notifications.
         self.assertListEqual(self._notification_manager.get_notifications(), [])
-
-    def test_centos7_deprecation_notifs(self):
-        """
-        Test CentOS7 deprecation notification.
-        """
-
-        with mock.patch.object(
-            self._notification_manager,
-            "_get_banner_settings",
-            return_value={
-                notifications.FirstLaunchNotification._FIRST_LAUNCH_BANNER_VIEWED_ID: True,
-            },
-        ), mock.patch.object(
-            notifications.CentOS7DeprecationNotification,
-            "display_on_this_os",
-            return_value=True,
-        ):
-            notifs = self._notification_manager.get_notifications()
-
-        is_included = False
-        for notif in notifs:
-            if isinstance(notif, notifications.CentOS7DeprecationNotification):
-                is_included = True
-
-            self._notification_manager.dismiss(notif)
-
-        self.assertTrue(is_included)

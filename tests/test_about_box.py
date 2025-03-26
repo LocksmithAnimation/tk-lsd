@@ -10,8 +10,8 @@
 
 import os
 import pytest
-from six.moves.html_parser import HTMLParser
-from six.moves.urllib import request
+from html.parser import HTMLParser
+from urllib import request
 
 
 @pytest.fixture
@@ -34,6 +34,7 @@ def licence_file_links(license_file):
     Given the path to the licence html file, it extracts the URL link out and
     returns them in a list.
     """
+
     # This class was taken and modified from this SO post:
     # https://stackoverflow.com/a/3075561/4223964
     class MyHTMLParser(HTMLParser):
@@ -50,7 +51,7 @@ def licence_file_links(license_file):
 
     # Open the licence file and read the parse the contents.
     parser = MyHTMLParser()
-    with open(license_file, "r") as f:
+    with open(license_file, "r", encoding="utf-8") as f:
         parser.feed(f.read())
 
     # We expect to atleast get one URL
@@ -78,11 +79,10 @@ def test_3rd_party_links(licence_file_links):
     "expected_url",
     [
         "https://github.com/shotgunsoftware/python-api/tree/master/software_credits",
-        "https://github.com/shotgunsoftware/tk-3dsmax/tree/master/software_credits",
-        "https://github.com/shotgunsoftware/tk-3dsmaxplus/tree/master/software_credits",
         "https://github.com/shotgunsoftware/tk-alias/tree/master/software_credits",
         "https://github.com/shotgunsoftware/tk-core/tree/master/software_credits",
         "https://github.com/shotgunsoftware/tk-framework-adobe/tree/master/software_credits",
+        "https://github.com/shotgunsoftware/tk-framework-alias/tree/master/software_credits",
         "https://github.com/shotgunsoftware/tk-framework-desktopclient/tree/master/software_credits",
         "https://github.com/shotgunsoftware/tk-framework-desktopserver/tree/master/software_credits",
         "https://github.com/shotgunsoftware/tk-houdini/tree/master/software_credits",
