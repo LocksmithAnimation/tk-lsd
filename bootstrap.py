@@ -110,7 +110,7 @@ def setup_environment(project_name):
     current_path = sys.path
     config.parent_variables = []
     project_key = generate_project_key(project_name)
-    context = ResolvedContext(["desktop_env", f"{project_key}_env"], ".dcc-shotgun")
+    context = ResolvedContext(["desktop_env", f"{project_key}_env", ".dcc-shotgun"])
     context.apply()
     sys.path.extend(current_path)
 
